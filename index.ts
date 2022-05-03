@@ -7,39 +7,39 @@ export default class Formify {
         this.$data = data;
     }
 
-    private stringValidator (data: string, prop: string): Boolean {
+    private stringValidator (data: string, prop: string): Boolean | string {
         const target = this.$data[prop];
 
         if (typeof data !== target.type) {
-            new Error(`The attribute ${prop}, should be type ${target.type}`);
+            return `The attribute ${prop}, should be type ${target.type}`;
         }
 
-        if (target.minlen < data.length) {
-            new Error(`The attribute ${prop}, should be greater than ${target.minlen}`);
+        if (data.length < target.minlen) {
+            return `The attribute ${prop}, should be greater than ${target.minlen}`;
         }
 
-        if (target.maxLen > data.length) {
-            new Error(`The attribute ${prop}, should be less than ${target.maxLen}`);
+        if (data.length > target.maxLen) {
+            return `The attribute ${prop}, should be less than ${target.maxLen}`;
         }
 
         return true;
     }
 
-    private numberValidator (data: number, prop: string) {
+    private numberValidator (data: number, prop: string): Boolean | string {
         const target = this.$data[prop];
 
         const strData = data.toString();
 
         if (typeof data !== target.type) {
-            new Error(`The attribute ${prop}, should be type ${target.type}`);
+            return `The attribute ${prop}, should be type ${target.type}`;
         }
 
-        if (target.minlen < strData.length) {
-            new Error(`The attribute ${prop}, should be greater than ${target.minlen}`);
+        if (strData.length < target.minlen){
+            return `The attribute ${prop}, should be greater than ${target.minlen}`;
         }
 
-        if (target.maxLen > strData.length) {
-            new Error(`The attribute ${prop}, should be less than ${target.maxLen}`);
+        if (strData.length > target.maxLen) {
+            return `The attribute ${prop}, should be less than ${target.maxLen}`;
         }
 
         return true;

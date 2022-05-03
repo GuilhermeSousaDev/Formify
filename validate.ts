@@ -1,17 +1,17 @@
-import Formify from ".";
+import Formify from "formi-formify";
 
 const form = new Formify({
     name: {
-        minlen: 5,
         maxLen: 15,
-        type: 'String',
+        minlen: 5,
+        type: 'string',
     },
     age: {
-        minlen: 1,
         maxLen: 3,
-        type: 'Number',
-    }
+        minlen: 1,
+        type: 'number',
+    },
 });
 
-console.log(form.validate('name', 'Guilhermdsfsfsffse'));
+console.log(form.validate('name', 'Guilherme'));
 console.log(form.validate('age', 15));
