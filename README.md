@@ -6,7 +6,7 @@ npm install formi-formify
 
 # How Use
 
-const form = new Formify({
+[example](const form = new Formify({
     name: {
         maxLen: 15,
         minlen: 5,
@@ -21,3 +21,4 @@ const form = new Formify({
 
 console.log(form.validate('name', 'Guilherme'));
 console.log(form.validate('age', 15));
+)
